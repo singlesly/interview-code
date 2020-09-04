@@ -40,7 +40,7 @@ export class CoreService {
 
     public async removeUser(userId: number): Promise<PaymentManagerInterface> {
         const user = await this.userStorage.getById(userId);
-        await this.paymentManager.eraseBalance(user);
+        const money = await this.paymentManager.getBalance(user);
         return this.paymentManager;
     }
 
